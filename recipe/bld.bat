@@ -1,7 +1,3 @@
-if "%platform%"=="x86" (set CMAKE_GENERATOR_PLATFORM="Win32")
-      else (set CMAKE_GENERATOR_PLATFORM="%platform%")
-cmake --version
-
 mkdir build-shared
 if errorlevel 1 exit 1
 cd build-shared
