@@ -10,8 +10,7 @@ source:
   sha256: a6533f45b1670b5d59b38a514d82b09c6fb70cc1050467220216335e873074e8
 
 build:
-  number: 0
-  skip: true  # [win]
+  number: 1
   run_exports:
     - {{ pin_subpackage("libcrc32c", max_pin="x.x") }}
 
@@ -40,3 +39,4 @@ about:
 extra:
   recipe-maintainers:
     - xhochy
+    - tswast
