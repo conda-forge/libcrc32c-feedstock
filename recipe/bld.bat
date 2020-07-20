@@ -2,16 +2,19 @@ if "%platform%"=="x86" (set CMAKE_GENERATOR_PLATFORM="Win32")
       else (set CMAKE_GENERATOR_PLATFORM="%platform%")
 cmake --version
 
-mkdir build_cmake && cd build_cmake
-
-set CMAKE_CONFIG="Release"
-
-dir /p %LIBRARY_PREFIX%\lib
-
-cmake -G "%CMAKE_GENERATOR%" -A "%CMAKE_GENERATOR_PLATFORM%" ^
-    -DCMAKE_CONFIGURATION_TYPES="%CONFIGURATION%"            ^
-    -DCRC32C_USE_GLOG=0 ..
+mkdir build-shared
+if errorlevel 1 exit 1
+cd build-shared
 if errorlevel 1 exit 1
 
-cmake --build . --config "%CONFIGURATION%" --target install
+:: Configure and install based on other `bld.bat`s and
+::https://github.com/google/crc32c/blob/master/.appveyor.yml
+cmake -G "Ninja" ^
+         -DCMAKE_BUILD_TYPE=Release ^
+         -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
+         -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
+         -DCRC32C_USE_GLOG=0 ^
+         ..
+if errorlevel 1 exit 1
+cmake --build . --target install --config Release
 if errorlevel 1 exit 1
