@@ -10,7 +10,7 @@ source:
   sha256: a6533f45b1670b5d59b38a514d82b09c6fb70cc1050467220216335e873074e8
 
 build:
-  number: 1
+  number: 2
   run_exports:
     - {{ pin_subpackage("libcrc32c", max_pin="x.x") }}
 
@@ -28,6 +28,9 @@ test:
    - test -f $PREFIX/lib/libcrc32c${SHLIB_EXT}  # [unix]
    - test -f $PREFIX/include/crc32c/crc32c.h  # [unix]
    - test -f $PREFIX/lib/cmake/Crc32c/Crc32cTargets.cmake  # [unix]
+   - if not exist %PREFIX%\\Library\\bin\\crc32c.dll exit 1  # [win]
+   - if not exist %PREFIX%\\Library\\lib\\crc32c.lib exit 1  # [win]
+   - if not exist %PREFIX%\\Library\\include\\crc32c\\crc32c.h exit 1  # [win]
 
 about:
   home: https://github.com/google/crc32c
