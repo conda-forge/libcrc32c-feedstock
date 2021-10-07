@@ -25,12 +25,12 @@ requirements:
 
 test:
   commands:
-    - test -f $PREFIX/lib/libcrc32c${SHLIB_EXT} # [unix]
-    - test -f $PREFIX/include/crc32c/crc32c.h # [unix]
-    - test -f $PREFIX/lib/cmake/Crc32c/Crc32cTargets.cmake # [unix]
-    - if not exist %PREFIX%\\Library\\bin\\crc32c.dll exit 1 # [win]
-    - if not exist %PREFIX%\\Library\\lib\\crc32c.lib exit 1 # [win]
-    - if not exist %PREFIX%\\Library\\include\\crc32c\\crc32c.h exit 1 # [win]
+    - test -f $PREFIX/lib/libcrc32c${SHLIB_EXT}  # [unix]
+    - test -f $PREFIX/include/crc32c/crc32c.h  # [unix]
+    - test -f $PREFIX/lib/cmake/Crc32c/Crc32cTargets.cmake  # [unix]
+    - if not exist %PREFIX%\\Library\\bin\\crc32c.dll exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\lib\\crc32c.lib exit 1  # [win]
+    - if not exist %PREFIX%\\Library\\include\\crc32c\\crc32c.h exit 1  # [win]
 
 about:
   home: https://github.com/google/crc32c
