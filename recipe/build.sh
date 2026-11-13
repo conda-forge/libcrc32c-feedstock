@@ -5,9 +5,8 @@ set -euo pipefail
 mkdir build_cmake
 pushd build_cmake
 
-export OPENSSL_ROOT_DIR=$PREFIX
-
 cmake ${CMAKE_ARGS} -GNinja \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DBUILD_TESTING=OFF \
     -DBUILD_SHARED_LIBS=ON \
     -DCRC32C_BUILD_TESTS=OFF \
